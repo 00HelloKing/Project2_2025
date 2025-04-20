@@ -8,7 +8,7 @@ GPIO.setup(channel, GPIO.IN)
 
 def callback(channel):
 	if GPIO.input(channel):
-		print("Water Detected")
+		print("Water Not Detected")
 	else:
 		print("Water Detected")
 #let us know when the pin goes HIGH or LOW
