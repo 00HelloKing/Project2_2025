@@ -1,6 +1,7 @@
 import smtplib
 from email.message import EmailMessage
 
+# from and to email
 from_email_addr = "2924827477@qq.com"
 from_email_pass = "pgcqojtevblxdcfh"
 to_email_addr = "jkf1018407510@163.com"
@@ -12,6 +13,7 @@ msg['From'] = from_email_addr
 msg['To'] = to_email_addr
 msg['Subject'] = 'TEST EMAIL'
 
+# the port
 server = smtplib.SMTP('smtp.qq.com', 587)  
 server.starttls()
 server.login(from_email_addr, from_email_pass)

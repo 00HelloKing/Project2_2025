@@ -38,7 +38,7 @@ def send_email(status):
 while True:
     current_hour = datetime.now().hour
 # chect time in a day
-    if current_hour in [8, 11, 15, 18]:
+    if current_hour in [10, 13, 16, 19]:
         if GPIO.input(channel):
             send_email("Water detected")
         else:
