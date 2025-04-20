@@ -40,9 +40,9 @@ while True:
 # chect time in a day
     if current_hour in [10, 13, 16, 19]:
         if GPIO.input(channel):
-            send_email("Water detected")
-        else:
             send_email("Water Not detected")
+        else:
+            send_email("Water  detected")
 # wait for 1 hour to avoid repetition
         time.sleep(3600)  
 # Chect every minute
