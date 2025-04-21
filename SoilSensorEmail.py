@@ -1,3 +1,10 @@
+# Agile Rasberry Pi Plant Moisture Sensor with Email Notification
+# It combined the function that uses check water from soil with function that sends emails to inform the user the plant need to be watered
+# Name: Jin Kaifeng
+# Student ID: 202283890029
+# Semester Project 3  &  Grade 3
+# Date: 20/4/25
+
 import RPi.GPIO as GPIO
 import smtplib
 from email.message import EmailMessage
@@ -16,8 +23,10 @@ to_email_addr = "jkf1018407510@163.com"
 smtp_server = "smtp.qq.com"
 smtp_port = 587
 
+# Create an array to save the history information about watering
 history = []
 
+# Create a funtion about sending email
 def send_email(status):
     msg = EmailMessage()
     body = f"The plant's status: {status}\ntime: {datetime.now()}"
@@ -31,19 +40,21 @@ def send_email(status):
     server.send_message(msg)
     server.quit()
     history.append(body)
+
 # Save 3 days * 4 times
     if len(history) > 12: 
         history.pop(0)
 
 while True:
     current_hour = datetime.now().hour
-# chect time in a day
+# The checking time in a day
     if current_hour in [10, 13, 16, 19]:
         if GPIO.input(channel):
             send_email("Water Not detected")
         else:
             send_email("Water  detected")
-# wait for 1 hour to avoid repetition
+
+# Wait for 1 hour to avoid repetition
         time.sleep(3600)  
-# Chect every minute
+# Check every minute
     time.sleep(60)  
