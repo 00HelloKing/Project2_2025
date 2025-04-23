@@ -8,5 +8,3 @@ Name: Jin Kaifeng
 NUIST ID: 202283890029
 
 Semester Project 3  &  Grade 3
-
-Date: 20/4/25
